@@ -9,6 +9,7 @@ class MeetingsController < ApplicationController
   end
 
   def new
+    @meeting = Meeting.new
     render "new.html.erb"
   end
 
@@ -20,9 +21,12 @@ class MeetingsController < ApplicationController
       end_time: params[:end_time],
       notes: params[:notes],
     )
-    @meeting.save
-    flash[:success] = "Meeting successfully created!"
-    redirect_to "/meetings/#{@meeting.id}"
+    if @meeting.save
+      flash[:success] = "Meeting successfully created!"
+      redirect_to "/meetings/#{@meeting.id}"
+    else
+      render "new.html.erb"
+    end
   end
 
   def show
