@@ -16,10 +16,10 @@
     Address: <input type="text" name="address" value="<%= @meeting.address %>">
   </div>
   <div>
-    Start time: <input type="datetime-local" name="start_time" value="<%= @meeting.start_time %>">
+    Start time: <input type="datetime-local" name="start_time" value="<%= (@meeting.start_time || DateTime.now).strftime("%Y-%m-%dT%H:%M") %>">
   </div>
   <div>
-    End time: <input type="datetime-local" name="end_time" value="<%= @meeting.end_time %>">
+    End time: <input type="datetime-local" name="end_time" value="<%= (@meeting.end_time || DateTime.now + 1.hour).strftime("%Y-%m-%dT%H:%M") %>">
   </div>
   <div>
     Notes: <textarea name="notes" cols="30" rows="10"><%= @meeting.notes %></textarea>
