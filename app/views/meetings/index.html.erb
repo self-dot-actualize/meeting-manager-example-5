@@ -1,7 +1,8 @@
 <div id="app">
   <a href="/meetings/new">Create a new meeting</a>
   <h1><a href="/meetings">All meetings</a></h1>
-  <div v-for="meeting in meetings">
+  Search by name: <input type="text" v-model="nameFilter">
+  <div v-for="meeting in modifiedMeetings">
     <h3><a v-bind:href="'/meetings/' + meeting.id">{{ meeting.name }}</a></h3>
     <p>
       Tags:
