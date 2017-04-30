@@ -21,6 +21,7 @@ class MeetingsController < ApplicationController
       notes: params[:notes],
     )
     @meeting.save
+    flash[:success] = "Meeting successfully created!"
     redirect_to "/meetings/#{@meeting.id}"
   end
 
