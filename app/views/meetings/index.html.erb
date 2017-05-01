@@ -5,6 +5,11 @@
   <datalist id="names">
     <option v-for="meeting in meetings">{{ meeting.name }}</option>
   </datalist>
+  <div>
+    <button v-on:click="changeSortAttribute('name')">Sort by name</button>
+    <button v-on:click="changeSortAttribute('address')">Sort by address</button>
+    <button v-on:click="changeSortAttribute('start_time')">Sort by start time</button>
+  </div>
   <div v-for="meeting in modifiedMeetings">
     <h3><a v-bind:href="'/meetings/' + meeting.id">{{ meeting.name }}</a></h3>
     <p>
